@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Day Rate Calculator — Work Out Your Ideal Rate | CalcTools</title>
+<meta name="description" content="Calculate the day rate you need to charge as a freelancer or contractor to hit your income goal, accounting for time off, non-billable work and business expenses.">
+<link rel="canonical" href="https://example.github.io/CalcTools/calculators/freelance-day-rate.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+    <nav class="site-nav">
+      <a href="../index.html#calculators">Calculators</a>
+      <a href="freelance-day-rate.html">Day Rate</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> / Freelance Day Rate Calculator
+  </nav>
+
+  <div class="calc-page-header">
+    <h1>Freelance Day Rate Calculator</h1>
+    <p class="subtitle">Find the day rate you need to charge to hit your income target — after time off, admin time, and business costs.</p>
+  </div>
+
+  <section class="calculator">
+    <div class="calc-layout">
+
+      <form id="day-rate-form">
+
+        <div class="field-group">
+          <label for="income">Desired annual income</label>
+          <input type="number" id="income" min="0" step="100" value="60000">
+          <p class="hint">The amount you want to earn in a year, before tax.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="currency">Currency</label>
+          <select id="currency">
+            <option value="USD" selected>USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="expenses">Annual business expenses</label>
+          <input type="number" id="expenses" min="0" step="50" value="4000">
+          <p class="hint">Software, insurance, equipment, accounting, etc.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="weeksOff">Weeks off per year</label>
+            <input type="number" id="weeksOff" min="0" max="52" step="1" value="6">
+          </div>
+          <div class="field-group">
+            <label for="daysPerWeek">Working days / week</label>
+            <input type="number" id="daysPerWeek" min="1" max="7" step="1" value="5">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="utilization">Billable utilization (%)</label>
+            <input type="number" id="utilization" min="1" max="100" step="1" value="75">
+          </div>
+          <div class="field-group">
+            <label for="hoursPerDay">Hours per working day</label>
+            <input type="number" id="hoursPerDay" min="1" max="24" step="0.5" value="8">
+          </div>
+        </div>
+
+        <p class="hint" id="utilization-hint">Utilization is the share of your working days that are actually billed to clients — the rest goes to admin, marketing, proposals and downtime. Most freelancers land between 60% and 85%.</p>
+
+      </form>
+
+      <aside class="results">
+        <h2>Your rate</h2>
+        <div class="result-main"><span id="result-day-rate">$421</span><span class="unit">/ day</span></div>
+
+        <ul class="result-list">
+          <li><span>Hourly rate</span><span id="result-hourly-rate">$53 / hr</span></li>
+          <li><span>Working days / year</span><span id="result-working-days">230</span></li>
+          <li><span>Billable days / year</span><span id="result-billable-days">173</span></li>
+          <li><span>Revenue needed / year</span><span id="result-revenue">$64,000</span></li>
+        </ul>
+      </aside>
+
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>How to calculate a freelance day rate</h2>
+    <p>Setting a day rate is one of the most consequential decisions a freelancer makes, yet most people either copy a number from a forum or guess. The problem with guessing is that it ignores three things every freelancer runs into: paid time off, unpaid admin work, and running costs. A salaried employee's paycheck already accounts for holidays and non-productive hours — a freelancer's day rate has to cover them explicitly, or they quietly disappear from your income.</p>
+
+    <p>The calculator above works backwards from the number that actually matters: how much you want to earn in a year. It adds your annual business expenses to get the total revenue you need to generate, then divides that by the number of days you can realistically bill. That last part is the piece most rate calculators skip. Nobody bills 5 days a week, 52 weeks a year — between vacation, sick days, sales calls, invoicing, and slow weeks, most freelancers only bill 60–85% of their working days. That's the <strong>utilization rate</strong> field, and it's usually the single biggest lever on your final number.</p>
+
+    <h3>Why your day rate looks higher than an equivalent salary</h3>
+    <p>If a day rate of $400–500 sounds high compared to what an $60k/year employee earns per day, that's expected — it should be. A freelancer's rate has to fund the weeks nobody pays for, the health insurance an employer would normally subsidize, the software subscriptions, and the hours spent chasing the next contract. A rate that only matches a salaried day's pay will leave you earning less over the year, not the same.</p>
+
+    <p>Use this tool as a starting point, then sanity-check it against what similar freelancers in your market and specialism charge. Rates are also easier to raise than to lower, so when in doubt, round up.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <details>
+      <summary>What's a good utilization rate for a freelancer?</summary>
+      <p>Most freelancers bill between 60% and 85% of their available working days. New freelancers who are still building a client base tend to sit closer to 50–60%, while established freelancers with steady repeat work can reach 80–85%. Very few sustain 90%+ for long without burning out. Adjust the <strong>Billable utilization</strong> field above to match your own experience.</p>
+    </details>
+
+    <details>
+      <summary>Should my day rate include taxes?</summary>
+      <p>No — this calculator works in pre-tax terms. The "desired annual income" you enter should be what you want to earn before income tax and self-employment/social contributions. If you want your day rate to also cover a specific tax rate, increase the desired income field by that percentage, or track taxes separately alongside your business expenses.</p>
+    </details>
+
+    <details>
+      <summary>How is the hourly rate different from just dividing the day rate by 8?</summary>
+      <p>It isn't — the hourly rate shown is your day rate divided by the <strong>hours per working day</strong> you entered. It's provided for convenience when quoting hourly work or comparing against contracts that bill by the hour instead of the day.</p>
+    </details>
+
+    <details>
+      <summary>What should I count as a business expense?</summary>
+      <p>Anything you pay for specifically to run your freelance business and that wouldn't exist otherwise: software and tool subscriptions, professional insurance, accounting fees, a portion of home-office costs, equipment, and marketing. Don't include personal living expenses — those are already covered by the "desired annual income" figure.</p>
+    </details>
+
+    <details>
+      <summary>Where can I find more calculators like this one?</summary>
+      <p>This is the first calculator on CalcTools — head back to the <a href="../index.html#calculators">calculators homepage</a> to see what else is available, including upcoming savings and loan repayment calculators.</p>
+    </details>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 CalcTools. Built with plain HTML, CSS &amp; JavaScript.</span>
+    <span><a href="../index.html">Back to home</a></span>
+  </div>
+</footer>
+
+<script src="../js/freelance-day-rate.js"></script>
+</body>
+</html>
