@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Fund Calculator — How Much Should You Save | CalcTools</title>
+<meta name="description" content="Calculate the emergency fund size you need based on your monthly expenses, and how long it will take to build it.">
+<link rel="canonical" href="https://example.github.io/CalcTools/calculators/emergency-fund.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li class="nav-item is-active"><button type="button" class="nav-trigger" aria-expanded="false">Finance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><p class="nav-group-title">Épargne</p><a href="../calculators/compound-interest.html">Compound Interest</a>
+<a href="../calculators/savings-goal.html">Savings Goal</a>
+<a href="../calculators/emergency-fund.html">Emergency Fund</a>
+<a href="../calculators/retirement-savings.html">Retirement Savings</a>
+<a href="../calculators/net-worth.html">Net Worth</a></div>
+<div class="nav-group"><p class="nav-group-title">Emprunt</p><a href="../calculators/loan-repayment.html">Loan Repayment</a>
+<a href="../calculators/mortgage.html">Mortgage</a></div>
+<div class="nav-group"><p class="nav-group-title">Budget</p><a href="../calculators/monthly-budget.html">Monthly Budget</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Freelance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/freelance-day-rate.html">Day Rate</a>
+<a href="../calculators/project-quote.html">Project Quote</a>
+<a href="../calculators/freelance-tax.html">Tax Calculator</a>
+<a href="../calculators/hourly-rate.html">Hourly Rate</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Voyage<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/travel-budget.html">Travel Budget</a>
+<a href="../calculators/currency-converter.html">Currency Converter</a>
+<a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></div></div></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../categories/finance.html">Finance</a> / Emergency Fund Calculator
+  </nav>
+
+  <div class="calc-page-header">
+    <h1>Emergency Fund Calculator</h1>
+    <p class="subtitle">Work out how big your emergency fund should be, and how long it will take to get there.</p>
+  </div>
+
+  <section class="calculator">
+    <div class="calc-layout">
+      <form id="calc-form">
+        <div class="field-group">
+  <label for="monthlyExpenses">Essential monthly expenses</label>
+  <input type="number" id="monthlyExpenses" min="0" step="50" value="2000">
+  <p class="hint">Rent, utilities, food, insurance, debt minimums — needs, not wants.</p>
+</div><div class="field-row"><div class="field-group">
+  <label for="monthsCoverage">Months of coverage</label>
+  <input type="number" id="monthsCoverage" min="1" max="24" step="1" value="6">
+  
+</div><div class="field-group">
+  <label for="currentSavings">Current emergency savings</label>
+  <input type="number" id="currentSavings" min="0" step="50" value="3000">
+  
+</div></div><div class="field-group">
+  <label for="monthlySavingsCapacity">Monthly amount you can save (optional)</label>
+  <input type="number" id="monthlySavingsCapacity" min="0" step="25" value="300">
+  <p class="hint">Leave as 0 to skip the time-to-goal estimate.</p>
+</div>
+      </form>
+      <aside class="results">
+        <h2>Target emergency fund</h2>
+        <div class="result-main"><span id="result-target">$0</span></div><ul class="result-list"><li><span>Current savings</span><span id="result-current">—</span></li><li><span>Still needed</span><span id="result-needed">—</span></li><li><span>Months to reach goal</span><span id="result-months">—</span></li></ul>
+        <div class="chart-wrap"><canvas id="result-chart"></canvas></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>How big should an emergency fund be?</h2>
+<p>The standard guidance is three to six months of essential expenses — not your full spending, but the amount you'd need to cover rent or mortgage, utilities, groceries, insurance, and minimum debt payments if your income stopped tomorrow. People with variable income (freelancers, commission-based roles) or a single household income often lean toward six months or more; dual-income households with stable jobs sometimes go as low as three.</p>
+<p>This calculator multiplies your essential monthly expenses by your chosen coverage window to get a target, then compares it to what you've already saved to show what's left. If you add how much you can realistically set aside each month, it also estimates how long it will take to close the gap.</p>
+<h3>Where should the money actually sit?</h3>
+<p>An emergency fund needs to be accessible within a day or two and shouldn't lose value to market swings, which rules out investing it. A high-yield savings account is the usual answer — it earns some interest while staying liquid. Keeping it separate from your everyday checking account also removes the temptation to dip into it for non-emergencies.</p>
+<p>Once this fund is fully funded, many people redirect that same monthly amount toward a different goal — see the <a href="../calculators/savings-goal.html">Savings Goal Calculator</a> for a specific target, or the <a href="../calculators/retirement-savings.html">Retirement Savings Calculator</a> for the long game. If you're not sure how much you can realistically set aside each month, start with the <a href="../calculators/monthly-budget.html">Monthly Budget Calculator</a>.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details>
+  <summary>Should I count rent, but not streaming subscriptions?</summary>
+  <p>Yes — use essential, need-to-have expenses only: housing, utilities, groceries, insurance premiums, minimum debt payments, and transportation to work. Leave out discretionary spending like subscriptions, dining out, or entertainment, since those are the first things you'd cut in a real emergency.</p>
+</details>
+<details>
+  <summary>Is three months enough, or should I aim for six?</summary>
+  <p>Three months is a reasonable floor for a stable dual-income household with low job-loss risk. Freelancers, single-income households, or anyone in a volatile industry are usually better served by six months or more.</p>
+</details>
+<details>
+  <summary>Should my emergency fund be invested to earn a better return?</summary>
+  <p>Generally no. The purpose of this money is availability, not growth — a market downturn is exactly the kind of event that can also come with job losses, which is the worst time for your safety net to have lost value.</p>
+</details>
+<details>
+  <summary>What should I do once my emergency fund is fully funded?</summary>
+  <p>Redirect the same monthly amount toward another goal. The <a href="../calculators/savings-goal.html">Savings Goal Calculator</a> works for a specific target like a home down payment, while the <a href="../calculators/retirement-savings.html">Retirement Savings Calculator</a> is built for long-term investing.</p>
+</details>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+        <p style="margin-top:10px;max-width:280px;">Free, fast financial calculators. Pure HTML, CSS &amp; JavaScript — no accounts, no tracking clutter.</p>
+      </div>
+      <div>
+        <h4>Finance</h4>
+        <ul><li><a href="../calculators/compound-interest.html">Compound Interest</a></li>
+<li><a href="../calculators/savings-goal.html">Savings Goal</a></li>
+<li><a href="../calculators/emergency-fund.html">Emergency Fund</a></li>
+<li><a href="../calculators/retirement-savings.html">Retirement Savings</a></li>
+<li><a href="../calculators/net-worth.html">Net Worth</a></li>
+<li><a href="../calculators/loan-repayment.html">Loan Repayment</a></li>
+<li><a href="../calculators/mortgage.html">Mortgage</a></li>
+<li><a href="../calculators/monthly-budget.html">Monthly Budget</a></li></ul>
+      </div>
+      <div>
+        <h4>Freelance</h4>
+        <ul><li><a href="../calculators/freelance-day-rate.html">Day Rate</a></li>
+<li><a href="../calculators/project-quote.html">Project Quote</a></li>
+<li><a href="../calculators/freelance-tax.html">Tax Calculator</a></li>
+<li><a href="../calculators/hourly-rate.html">Hourly Rate</a></li></ul>
+      </div>
+      <div>
+        <h4>Voyage</h4>
+        <ul><li><a href="../calculators/travel-budget.html">Travel Budget</a></li>
+<li><a href="../calculators/currency-converter.html">Currency Converter</a></li>
+<li><a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 CalcTools. Built with plain HTML, CSS &amp; JavaScript.
+      <p class="disclaimer">Results from these calculators are estimates for general informational purposes only and are not financial, tax, or investment advice. Consult a qualified professional for decisions specific to your situation.</p>
+    </div>
+  </div>
+</footer>
+<script src="../js/common.js"></script>
+<script src="../js/vendor/chart.min.js"></script>
+<script src="../js/emergency-fund.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

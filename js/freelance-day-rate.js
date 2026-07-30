@@ -1,7 +1,6 @@
 (function () {
   "use strict";
-
-  var form = document.getElementById("day-rate-form");
+  var form = document.getElementById("calc-form");
   if (!form) return;
 
   var incomeInput = document.getElementById("income");
@@ -17,6 +16,9 @@
   var workingDaysOut = document.getElementById("result-working-days");
   var billableDaysOut = document.getElementById("result-billable-days");
   var revenueOut = document.getElementById("result-revenue");
+
+  var chartState = { chart: null };
+  var ctx = document.getElementById("result-chart");
 
   // Approximate exchange rates, pivoted through EUR (the base currency).
   var RATES_FROM_EUR = { EUR: 1, USD: 1.08, GBP: 0.86 };
@@ -36,46 +38,45 @@
     input.value = Math.round(convertAmount(value, fromCurrency, toCurrency));
   }
 
-  function formatMoney(value, currency) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: currency,
-      maximumFractionDigits: 0
-    }).format(value);
-  }
-
-  function clampNumber(value, min, fallback) {
-    var n = parseFloat(value);
-    if (isNaN(n) || n < min) return fallback;
-    return n;
-  }
-
   function calculate() {
-    var income = clampNumber(incomeInput.value, 0, 0);
-    var expenses = clampNumber(expensesInput.value, 0, 0);
-    var weeksOff = clampNumber(weeksOffInput.value, 0, 0);
-    var daysPerWeek = clampNumber(daysPerWeekInput.value, 1, 5);
-    var utilization = clampNumber(utilizationInput.value, 1, 100);
-    var hoursPerDay = clampNumber(hoursPerDayInput.value, 1, 8);
+    var income = CalcTools.clamp(incomeInput.value, 0, 0);
+    var expenses = CalcTools.clamp(expensesInput.value, 0, 0);
+    var weeksOff = Math.min(CalcTools.clamp(weeksOffInput.value, 0, 0), 52);
+    var daysPerWeek = Math.min(CalcTools.clamp(daysPerWeekInput.value, 1, 5), 7);
+    var utilization = Math.min(CalcTools.clamp(utilizationInput.value, 1, 100), 100);
+    var hoursPerDay = CalcTools.clamp(hoursPerDayInput.value, 1, 8);
     var currency = currencyInput.value;
-
-    weeksOff = Math.min(weeksOff, 52);
-    daysPerWeek = Math.min(daysPerWeek, 7);
-    utilization = Math.min(utilization, 100);
 
     var workingWeeks = Math.max(52 - weeksOff, 0);
     var workingDays = workingWeeks * daysPerWeek;
     var billableDays = workingDays * (utilization / 100);
+    var nonBillableDays = Math.max(workingDays - billableDays, 0);
     var revenueNeeded = income + expenses;
 
     var dayRate = billableDays > 0 ? revenueNeeded / billableDays : 0;
     var hourlyRate = hoursPerDay > 0 ? dayRate / hoursPerDay : 0;
 
-    dayRateOut.textContent = formatMoney(dayRate, currency);
-    hourlyRateOut.textContent = formatMoney(hourlyRate, currency) + " / hr";
+    dayRateOut.textContent = CalcTools.formatMoney(dayRate, currency);
+    hourlyRateOut.textContent = CalcTools.formatMoney(hourlyRate, currency) + " / hr";
     workingDaysOut.textContent = Math.round(workingDays);
     billableDaysOut.textContent = Math.round(billableDays);
-    revenueOut.textContent = formatMoney(revenueNeeded, currency);
+    revenueOut.textContent = CalcTools.formatMoney(revenueNeeded, currency);
+
+    CalcTools.upsertChart(chartState, ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["Billable days", "Non-billable days"],
+        datasets: [{
+          data: [Math.round(billableDays), Math.round(nonBillableDays)],
+          backgroundColor: [CalcTools.PALETTE[1], CalcTools.PALETTE[3]]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 11 } } } }
+      }
+    });
   }
 
   currencyInput.addEventListener("change", function () {

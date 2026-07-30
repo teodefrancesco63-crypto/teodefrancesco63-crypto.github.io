@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Calculator — Monthly Payment Estimate | CalcTools</title>
+<meta name="description" content="Estimate your monthly mortgage payment including principal, interest, taxes, and insurance. Free mortgage calculator.">
+<link rel="canonical" href="https://example.github.io/CalcTools/calculators/mortgage.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li class="nav-item is-active"><button type="button" class="nav-trigger" aria-expanded="false">Finance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><p class="nav-group-title">Épargne</p><a href="../calculators/compound-interest.html">Compound Interest</a>
+<a href="../calculators/savings-goal.html">Savings Goal</a>
+<a href="../calculators/emergency-fund.html">Emergency Fund</a>
+<a href="../calculators/retirement-savings.html">Retirement Savings</a>
+<a href="../calculators/net-worth.html">Net Worth</a></div>
+<div class="nav-group"><p class="nav-group-title">Emprunt</p><a href="../calculators/loan-repayment.html">Loan Repayment</a>
+<a href="../calculators/mortgage.html">Mortgage</a></div>
+<div class="nav-group"><p class="nav-group-title">Budget</p><a href="../calculators/monthly-budget.html">Monthly Budget</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Freelance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/freelance-day-rate.html">Day Rate</a>
+<a href="../calculators/project-quote.html">Project Quote</a>
+<a href="../calculators/freelance-tax.html">Tax Calculator</a>
+<a href="../calculators/hourly-rate.html">Hourly Rate</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Voyage<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/travel-budget.html">Travel Budget</a>
+<a href="../calculators/currency-converter.html">Currency Converter</a>
+<a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></div></div></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../categories/finance.html">Finance</a> / Mortgage Calculator
+  </nav>
+
+  <div class="calc-page-header">
+    <h1>Mortgage Calculator</h1>
+    <p class="subtitle">Estimate your monthly mortgage payment, including taxes and insurance.</p>
+  </div>
+
+  <section class="calculator">
+    <div class="calc-layout">
+      <form id="calc-form">
+        <div class="field-row"><div class="field-group">
+  <label for="homePrice">Home price</label>
+  <input type="number" id="homePrice" min="0" step="1000" value="300000">
+  
+</div><div class="field-group">
+  <label for="downPayment">Down payment</label>
+  <input type="number" id="downPayment" min="0" step="1000" value="60000">
+  
+</div></div><div class="field-row"><div class="field-group">
+  <label for="annualRate">Annual interest rate (%)</label>
+  <input type="number" id="annualRate" min="0" max="20" step="0.05" value="6.5">
+  
+</div><div class="field-group">
+  <label for="termYears">Loan term (years)</label>
+  <input type="number" id="termYears" min="5" max="40" step="1" value="30">
+  
+</div></div><div class="field-group">
+  <label for="monthlyExtras">Monthly taxes, insurance & HOA</label>
+  <input type="number" id="monthlyExtras" min="0" step="10" value="350">
+  <p class="hint">Optional — added on top of principal and interest.</p>
+</div>
+      </form>
+      <aside class="results">
+        <h2>Estimated monthly payment</h2>
+        <div class="result-main"><span id="result-total-payment">$0</span><span class="unit">/ month</span></div><ul class="result-list"><li><span>Principal & interest</span><span id="result-pi">—</span></li><li><span>Loan amount</span><span id="result-loan-amount">—</span></li><li><span>Total interest over term</span><span id="result-total-interest">—</span></li></ul>
+        <div class="chart-wrap"><canvas id="result-chart"></canvas></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>What goes into a mortgage payment</h2>
+<p>A mortgage payment usually has more moving parts than a standard loan: principal and interest (P&amp;I) form the base, calculated on the amount you borrow after your down payment — not the full home price. On top of that, lenders often collect property taxes and homeowners insurance monthly (sometimes bundled into an escrow account), and if your down payment is under 20%, private mortgage insurance may apply as well.</p>
+<p>This calculator computes P&amp;I using the same amortization formula as any fixed-rate loan, then adds your estimated monthly taxes, insurance, and HOA dues on top to give a more realistic total monthly cost — the number that actually matters for budgeting.</p>
+<h3>How the down payment changes things</h3>
+<p>Every dollar of down payment reduces the loan amount dollar for dollar, which lowers both the monthly payment and the total interest paid over the life of the loan. A 20% down payment is a common target because it typically avoids private mortgage insurance, but the right amount depends on your savings, other goals, and local market conditions.</p>
+<p>Try comparing a 15-year term against a 30-year term at the same rate — the monthly payment is higher, but total interest paid is dramatically lower. Once you have a sense of the loan amount and monthly cost, the <a href="../calculators/monthly-budget.html">Monthly Budget Calculator</a> can show how it fits alongside your other expenses, and the <a href="../calculators/net-worth.html">Net Worth Calculator</a> tracks the home equity you build over time.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details>
+  <summary>What's a realistic estimate for taxes and insurance?</summary>
+  <p>It varies a lot by location. As a rough starting point, property taxes often run 0.5-2% of home value per year, and insurance a few hundred dollars a month — check local rates for a more accurate figure, since this varies significantly between regions.</p>
+</details>
+<details>
+  <summary>Should I put down 20%?</summary>
+  <p>20% is a common benchmark mainly because it usually avoids private mortgage insurance (PMI), an extra monthly cost on top of P&I. It's not a hard requirement — many loans allow less down — but putting down less generally means a higher monthly payment and more total interest.</p>
+</details>
+<details>
+  <summary>Why is my payment much higher than just principal and interest?</summary>
+  <p>Taxes, insurance, and HOA dues (if applicable) are often collected monthly alongside your loan payment. Toggle the "Monthly taxes, insurance & HOA" field to 0 to see the principal-and-interest-only figure for comparison.</p>
+</details>
+<details>
+  <summary>How is this different from the Loan Repayment calculator?</summary>
+  <p>The math is the same amortization formula. This calculator adds mortgage-specific details — a down payment and optional monthly taxes/insurance/HOA — on top. For a simpler loan without those extras, use the <a href="../calculators/loan-repayment.html">Loan Repayment Calculator</a>.</p>
+</details>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+        <p style="margin-top:10px;max-width:280px;">Free, fast financial calculators. Pure HTML, CSS &amp; JavaScript — no accounts, no tracking clutter.</p>
+      </div>
+      <div>
+        <h4>Finance</h4>
+        <ul><li><a href="../calculators/compound-interest.html">Compound Interest</a></li>
+<li><a href="../calculators/savings-goal.html">Savings Goal</a></li>
+<li><a href="../calculators/emergency-fund.html">Emergency Fund</a></li>
+<li><a href="../calculators/retirement-savings.html">Retirement Savings</a></li>
+<li><a href="../calculators/net-worth.html">Net Worth</a></li>
+<li><a href="../calculators/loan-repayment.html">Loan Repayment</a></li>
+<li><a href="../calculators/mortgage.html">Mortgage</a></li>
+<li><a href="../calculators/monthly-budget.html">Monthly Budget</a></li></ul>
+      </div>
+      <div>
+        <h4>Freelance</h4>
+        <ul><li><a href="../calculators/freelance-day-rate.html">Day Rate</a></li>
+<li><a href="../calculators/project-quote.html">Project Quote</a></li>
+<li><a href="../calculators/freelance-tax.html">Tax Calculator</a></li>
+<li><a href="../calculators/hourly-rate.html">Hourly Rate</a></li></ul>
+      </div>
+      <div>
+        <h4>Voyage</h4>
+        <ul><li><a href="../calculators/travel-budget.html">Travel Budget</a></li>
+<li><a href="../calculators/currency-converter.html">Currency Converter</a></li>
+<li><a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 CalcTools. Built with plain HTML, CSS &amp; JavaScript.
+      <p class="disclaimer">Results from these calculators are estimates for general informational purposes only and are not financial, tax, or investment advice. Consult a qualified professional for decisions specific to your situation.</p>
+    </div>
+  </div>
+</footer>
+<script src="../js/common.js"></script>
+<script src="../js/vendor/chart.min.js"></script>
+<script src="../js/mortgage.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

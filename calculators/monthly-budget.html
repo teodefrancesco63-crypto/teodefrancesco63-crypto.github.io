@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Budget Calculator — Where Does Your Money Go | CalcTools</title>
+<meta name="description" content="Build a simple monthly budget: enter your income and expense categories to see what's left over and your savings rate.">
+<link rel="canonical" href="https://example.github.io/CalcTools/calculators/monthly-budget.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li class="nav-item is-active"><button type="button" class="nav-trigger" aria-expanded="false">Finance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><p class="nav-group-title">Épargne</p><a href="../calculators/compound-interest.html">Compound Interest</a>
+<a href="../calculators/savings-goal.html">Savings Goal</a>
+<a href="../calculators/emergency-fund.html">Emergency Fund</a>
+<a href="../calculators/retirement-savings.html">Retirement Savings</a>
+<a href="../calculators/net-worth.html">Net Worth</a></div>
+<div class="nav-group"><p class="nav-group-title">Emprunt</p><a href="../calculators/loan-repayment.html">Loan Repayment</a>
+<a href="../calculators/mortgage.html">Mortgage</a></div>
+<div class="nav-group"><p class="nav-group-title">Budget</p><a href="../calculators/monthly-budget.html">Monthly Budget</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Freelance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/freelance-day-rate.html">Day Rate</a>
+<a href="../calculators/project-quote.html">Project Quote</a>
+<a href="../calculators/freelance-tax.html">Tax Calculator</a>
+<a href="../calculators/hourly-rate.html">Hourly Rate</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Voyage<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/travel-budget.html">Travel Budget</a>
+<a href="../calculators/currency-converter.html">Currency Converter</a>
+<a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></div></div></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../categories/finance.html">Finance</a> / Monthly Budget Calculator
+  </nav>
+
+  <div class="calc-page-header">
+    <h1>Monthly Budget Calculator</h1>
+    <p class="subtitle">See where your income goes each month, and how much is left over.</p>
+  </div>
+
+  <section class="calculator">
+    <div class="calc-layout">
+      <form id="calc-form">
+        <div class="field-group">
+  <label for="income">Monthly income (after tax)</label>
+  <input type="number" id="income" min="0" step="50" value="4000">
+  
+</div><div class="field-row"><div class="field-group">
+  <label for="housing">Housing</label>
+  <input type="number" id="housing" min="0" step="25" value="1200">
+  
+</div><div class="field-group">
+  <label for="transportation">Transportation</label>
+  <input type="number" id="transportation" min="0" step="25" value="300">
+  
+</div></div><div class="field-row"><div class="field-group">
+  <label for="food">Food & groceries</label>
+  <input type="number" id="food" min="0" step="25" value="500">
+  
+</div><div class="field-group">
+  <label for="utilities">Utilities</label>
+  <input type="number" id="utilities" min="0" step="25" value="200">
+  
+</div></div><div class="field-row"><div class="field-group">
+  <label for="insurance">Insurance</label>
+  <input type="number" id="insurance" min="0" step="25" value="150">
+  
+</div><div class="field-group">
+  <label for="debtPayments">Debt payments</label>
+  <input type="number" id="debtPayments" min="0" step="25" value="300">
+  
+</div></div><div class="field-row"><div class="field-group">
+  <label for="savings">Savings</label>
+  <input type="number" id="savings" min="0" step="25" value="400">
+  
+</div><div class="field-group">
+  <label for="entertainment">Entertainment & other</label>
+  <input type="number" id="entertainment" min="0" step="25" value="350">
+  
+</div></div>
+      </form>
+      <aside class="results">
+        <h2>Left over each month</h2>
+        <div class="result-main"><span id="result-leftover">$0</span><span class="unit">/ month</span></div><ul class="result-list"><li><span>Total allocated</span><span id="result-total-allocated">—</span></li><li><span>Savings rate</span><span id="result-savings-rate">—</span></li></ul>
+        <div class="chart-wrap"><canvas id="result-chart"></canvas></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Building a monthly budget that actually holds up</h2>
+<p>A budget only works if it reflects real numbers, not aspirational ones. This calculator adds up spending across the categories most households track — housing, transportation, food, utilities, insurance, debt payments, savings, and everything else — and compares the total to your income, so you can see immediately whether you're spending more than you earn.</p>
+<p>Treating "savings" as its own line item, rather than whatever happens to be left at the end of the month, is deliberate: budgets that pay savings last tend to shrink it first when money is tight. Putting a number in that field and holding to it, the same way you would a bill, is one of the more reliable ways to actually save consistently.</p>
+<h3>A rough benchmark: the 50/30/20 split</h3>
+<p>One common framework suggests roughly 50% of after-tax income toward needs (housing, utilities, minimum debt payments, groceries), 30% toward wants (entertainment, dining out, subscriptions), and 20% toward savings and extra debt payoff. It's a starting point, not a rule — housing costs alone push many budgets well past 50% in expensive cities, and that's fine as long as the other categories flex to compensate.</p>
+<p>If the leftover amount is negative, the fastest fixes are usually the largest categories first — housing and transportation — rather than trimming small discretionary items. Once you have a savings number that fits, the <a href="../calculators/savings-goal.html">Savings Goal Calculator</a> or <a href="../calculators/emergency-fund.html">Emergency Fund Calculator</a> can help you point it at a specific goal.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details>
+  <summary>What income should I enter — gross or net?</summary>
+  <p>Use your net (after-tax) income. Budgeting against gross income overstates what you actually have available, since taxes are deducted before you ever see the money.</p>
+</details>
+<details>
+  <summary>What if my leftover amount is negative?</summary>
+  <p>That means your allocated categories add up to more than your income — a sign to trim spending somewhere. Start with the largest categories (housing, transportation) rather than small discretionary ones, since a 10% cut on a big category usually beats eliminating a small one entirely.</p>
+</details>
+<details>
+  <summary>Is the 50/30/20 rule realistic everywhere?</summary>
+  <p>Not always — it's a general benchmark, and housing costs in expensive cities routinely exceed the 50% "needs" guideline on their own. Use it as a rough comparison point rather than a strict target.</p>
+</details>
+<details>
+  <summary>Where should extra leftover money go?</summary>
+  <p>That depends on your goals: building a safety net first with the <a href="../calculators/emergency-fund.html">Emergency Fund Calculator</a> is usually the priority before other goals, followed by a specific target with the <a href="../calculators/savings-goal.html">Savings Goal Calculator</a> or long-term investing with the <a href="../calculators/retirement-savings.html">Retirement Savings Calculator</a>.</p>
+</details>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+        <p style="margin-top:10px;max-width:280px;">Free, fast financial calculators. Pure HTML, CSS &amp; JavaScript — no accounts, no tracking clutter.</p>
+      </div>
+      <div>
+        <h4>Finance</h4>
+        <ul><li><a href="../calculators/compound-interest.html">Compound Interest</a></li>
+<li><a href="../calculators/savings-goal.html">Savings Goal</a></li>
+<li><a href="../calculators/emergency-fund.html">Emergency Fund</a></li>
+<li><a href="../calculators/retirement-savings.html">Retirement Savings</a></li>
+<li><a href="../calculators/net-worth.html">Net Worth</a></li>
+<li><a href="../calculators/loan-repayment.html">Loan Repayment</a></li>
+<li><a href="../calculators/mortgage.html">Mortgage</a></li>
+<li><a href="../calculators/monthly-budget.html">Monthly Budget</a></li></ul>
+      </div>
+      <div>
+        <h4>Freelance</h4>
+        <ul><li><a href="../calculators/freelance-day-rate.html">Day Rate</a></li>
+<li><a href="../calculators/project-quote.html">Project Quote</a></li>
+<li><a href="../calculators/freelance-tax.html">Tax Calculator</a></li>
+<li><a href="../calculators/hourly-rate.html">Hourly Rate</a></li></ul>
+      </div>
+      <div>
+        <h4>Voyage</h4>
+        <ul><li><a href="../calculators/travel-budget.html">Travel Budget</a></li>
+<li><a href="../calculators/currency-converter.html">Currency Converter</a></li>
+<li><a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 CalcTools. Built with plain HTML, CSS &amp; JavaScript.
+      <p class="disclaimer">Results from these calculators are estimates for general informational purposes only and are not financial, tax, or investment advice. Consult a qualified professional for decisions specific to your situation.</p>
+    </div>
+  </div>
+</footer>
+<script src="../js/common.js"></script>
+<script src="../js/vendor/chart.min.js"></script>
+<script src="../js/monthly-budget.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

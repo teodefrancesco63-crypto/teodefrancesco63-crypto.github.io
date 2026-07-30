@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Tax Calculator — Estimate Your Take-Home Income | CalcTools</title>
+<meta name="description" content="Estimate your net income after self-employment and income tax on freelance earnings. Simple, approximate freelance tax calculator.">
+<link rel="canonical" href="https://example.github.io/CalcTools/calculators/freelance-tax.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Finance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><p class="nav-group-title">Épargne</p><a href="../calculators/compound-interest.html">Compound Interest</a>
+<a href="../calculators/savings-goal.html">Savings Goal</a>
+<a href="../calculators/emergency-fund.html">Emergency Fund</a>
+<a href="../calculators/retirement-savings.html">Retirement Savings</a>
+<a href="../calculators/net-worth.html">Net Worth</a></div>
+<div class="nav-group"><p class="nav-group-title">Emprunt</p><a href="../calculators/loan-repayment.html">Loan Repayment</a>
+<a href="../calculators/mortgage.html">Mortgage</a></div>
+<div class="nav-group"><p class="nav-group-title">Budget</p><a href="../calculators/monthly-budget.html">Monthly Budget</a></div></div></li>
+<li class="nav-item is-active"><button type="button" class="nav-trigger" aria-expanded="false">Freelance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/freelance-day-rate.html">Day Rate</a>
+<a href="../calculators/project-quote.html">Project Quote</a>
+<a href="../calculators/freelance-tax.html">Tax Calculator</a>
+<a href="../calculators/hourly-rate.html">Hourly Rate</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Voyage<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/travel-budget.html">Travel Budget</a>
+<a href="../calculators/currency-converter.html">Currency Converter</a>
+<a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></div></div></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../categories/freelance.html">Freelance</a> / Freelance Tax Calculator
+  </nav>
+
+  <div class="calc-page-header">
+    <h1>Freelance Tax Calculator</h1>
+    <p class="subtitle">Get a rough estimate of what you'll take home after tax on your freelance income.</p>
+  </div>
+
+  <section class="calculator">
+    <div class="calc-layout">
+      <form id="calc-form">
+        <div class="field-group">
+  <label for="grossIncome">Gross freelance income (annual)</label>
+  <input type="number" id="grossIncome" min="0" step="500" value="80000">
+  
+</div><div class="field-group">
+  <label for="businessExpenses">Deductible business expenses</label>
+  <input type="number" id="businessExpenses" min="0" step="100" value="10000">
+  
+</div><div class="field-row"><div class="field-group">
+  <label for="seTaxRate">Self-employment / social tax rate (%)</label>
+  <input type="number" id="seTaxRate" min="0" max="60" step="0.1" value="15.3">
+  
+</div><div class="field-group">
+  <label for="incomeTaxRate">Estimated income tax rate (%)</label>
+  <input type="number" id="incomeTaxRate" min="0" max="60" step="0.5" value="18">
+  
+</div></div><p class="hint">This is a simplified, flat-rate estimate — it does not model progressive tax brackets, credits, or deductions beyond what you enter. Use it for ballpark planning, not tax filing.</p>
+      </form>
+      <aside class="results">
+        <h2>Estimated net income</h2>
+        <div class="result-main"><span id="result-net">$0</span></div><ul class="result-list"><li><span>Taxable income (net of expenses)</span><span id="result-taxable">—</span></li><li><span>Estimated total tax</span><span id="result-tax">—</span></li><li><span>Effective rate on gross income</span><span id="result-effective-rate">—</span></li></ul>
+        <div class="chart-wrap"><canvas id="result-chart"></canvas></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>A simple way to estimate freelance take-home pay</h2>
+<p>Freelance income is taxed differently from a salary in most countries: on top of ordinary income tax, self-employed workers typically owe an additional self-employment or social contributions tax that an employer would otherwise split with them. Because rates and rules vary enormously by country — and often by income bracket within a country — this calculator uses a simplified flat-rate model rather than trying to replicate a specific tax code.</p>
+<p>It starts by subtracting your deductible business expenses from gross income to get a taxable base, then applies a combined rate (self-employment/social rate plus income tax rate) that you set based on your own situation or a quick search of your country's typical rates. The result is a rough estimate of net income — useful for pricing decisions and planning, not for filing.</p>
+<h3>Why this is deliberately simplified</h3>
+<p>Real tax systems use progressive brackets, deductions, credits, and thresholds that a single flat rate can't capture precisely. This tool is meant to answer a quick, practical question — "if I earn X, roughly how much will I actually keep?" — so you can make pricing and saving decisions during the year, not to replace a tax return. Set aside money for taxes based on a conservative estimate, and true it up with an accountant.</p>
+<p>If you're setting a rate to make sure you hit a specific take-home number, start from the <a href="../calculators/freelance-day-rate.html">Day Rate Calculator</a> or <a href="../calculators/hourly-rate.html">Hourly Rate Calculator</a> and increase the desired income until the after-tax figure here matches your target.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details>
+  <summary>Is this accurate enough to file my taxes?</summary>
+  <p>No — this is a simplified planning estimate using flat rates you provide, not a substitute for tax software or an accountant. Real tax systems use progressive brackets, deductions, and credits this tool doesn't model.</p>
+</details>
+<details>
+  <summary>What rate should I use for self-employment / social tax?</summary>
+  <p>It varies by country — search for your country's self-employed social contributions or self-employment tax rate as a starting point, or ask an accountant. The US self-employment tax rate, for example, is commonly cited around 15.3%.</p>
+</details>
+<details>
+  <summary>Should I set aside money for taxes throughout the year?</summary>
+  <p>Yes — most freelancers set aside a percentage of every payment (often 25-35% combined) into a separate account specifically for taxes, rather than treating gross income as fully spendable. This estimator can help you pick a starting percentage.</p>
+</details>
+<details>
+  <summary>How does this connect to my rate-setting?</summary>
+  <p>If a target take-home number matters more to you than a target rate, work backward: raise the desired income in the <a href="../calculators/freelance-day-rate.html">Day Rate Calculator</a> until this tool's net income estimate hits your goal.</p>
+</details>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+        <p style="margin-top:10px;max-width:280px;">Free, fast financial calculators. Pure HTML, CSS &amp; JavaScript — no accounts, no tracking clutter.</p>
+      </div>
+      <div>
+        <h4>Finance</h4>
+        <ul><li><a href="../calculators/compound-interest.html">Compound Interest</a></li>
+<li><a href="../calculators/savings-goal.html">Savings Goal</a></li>
+<li><a href="../calculators/emergency-fund.html">Emergency Fund</a></li>
+<li><a href="../calculators/retirement-savings.html">Retirement Savings</a></li>
+<li><a href="../calculators/net-worth.html">Net Worth</a></li>
+<li><a href="../calculators/loan-repayment.html">Loan Repayment</a></li>
+<li><a href="../calculators/mortgage.html">Mortgage</a></li>
+<li><a href="../calculators/monthly-budget.html">Monthly Budget</a></li></ul>
+      </div>
+      <div>
+        <h4>Freelance</h4>
+        <ul><li><a href="../calculators/freelance-day-rate.html">Day Rate</a></li>
+<li><a href="../calculators/project-quote.html">Project Quote</a></li>
+<li><a href="../calculators/freelance-tax.html">Tax Calculator</a></li>
+<li><a href="../calculators/hourly-rate.html">Hourly Rate</a></li></ul>
+      </div>
+      <div>
+        <h4>Voyage</h4>
+        <ul><li><a href="../calculators/travel-budget.html">Travel Budget</a></li>
+<li><a href="../calculators/currency-converter.html">Currency Converter</a></li>
+<li><a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 CalcTools. Built with plain HTML, CSS &amp; JavaScript.
+      <p class="disclaimer">Results from these calculators are estimates for general informational purposes only and are not financial, tax, or investment advice. Consult a qualified professional for decisions specific to your situation.</p>
+    </div>
+  </div>
+</footer>
+<script src="../js/common.js"></script>
+<script src="../js/vendor/chart.min.js"></script>
+<script src="../js/freelance-tax.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

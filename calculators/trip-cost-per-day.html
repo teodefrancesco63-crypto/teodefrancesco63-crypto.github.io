@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Cost Per Day Calculator — Track Your Spending Pace | CalcTools</title>
+<meta name="description" content="Calculate your planned daily travel budget and check whether your actual spending is on pace, ahead, or behind.">
+<link rel="canonical" href="https://example.github.io/CalcTools/calculators/trip-cost-per-day.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Finance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><p class="nav-group-title">Épargne</p><a href="../calculators/compound-interest.html">Compound Interest</a>
+<a href="../calculators/savings-goal.html">Savings Goal</a>
+<a href="../calculators/emergency-fund.html">Emergency Fund</a>
+<a href="../calculators/retirement-savings.html">Retirement Savings</a>
+<a href="../calculators/net-worth.html">Net Worth</a></div>
+<div class="nav-group"><p class="nav-group-title">Emprunt</p><a href="../calculators/loan-repayment.html">Loan Repayment</a>
+<a href="../calculators/mortgage.html">Mortgage</a></div>
+<div class="nav-group"><p class="nav-group-title">Budget</p><a href="../calculators/monthly-budget.html">Monthly Budget</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Freelance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/freelance-day-rate.html">Day Rate</a>
+<a href="../calculators/project-quote.html">Project Quote</a>
+<a href="../calculators/freelance-tax.html">Tax Calculator</a>
+<a href="../calculators/hourly-rate.html">Hourly Rate</a></div></div></li>
+<li class="nav-item is-active"><button type="button" class="nav-trigger" aria-expanded="false">Voyage<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/travel-budget.html">Travel Budget</a>
+<a href="../calculators/currency-converter.html">Currency Converter</a>
+<a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></div></div></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../categories/voyage.html">Voyage</a> / Trip Cost Per Day Calculator
+  </nav>
+
+  <div class="calc-page-header">
+    <h1>Trip Cost Per Day Calculator</h1>
+    <p class="subtitle">Check your planned daily spending rate, and whether you're on pace partway through a trip.</p>
+  </div>
+
+  <section class="calculator">
+    <div class="calc-layout">
+      <form id="calc-form">
+        <div class="field-row"><div class="field-group">
+  <label for="totalBudget">Total trip budget</label>
+  <input type="number" id="totalBudget" min="0" step="50" value="2000">
+  
+</div><div class="field-group">
+  <label for="days">Trip length (days)</label>
+  <input type="number" id="days" min="1" max="120" step="1" value="10">
+  
+</div></div><div class="field-row"><div class="field-group">
+  <label for="alreadySpent">Already spent (optional)</label>
+  <input type="number" id="alreadySpent" min="0" step="10" value="900">
+  
+</div><div class="field-group">
+  <label for="daysElapsed">Days elapsed (optional)</label>
+  <input type="number" id="daysElapsed" min="0" max="120" step="1" value="4">
+  
+</div></div>
+      </form>
+      <aside class="results">
+        <h2>Planned cost per day</h2>
+        <div class="result-main"><span id="result-per-day">$0</span><span class="unit">/ day planned</span></div><ul class="result-list"><li><span>Remaining budget</span><span id="result-remaining-budget">—</span></li><li><span>Days remaining</span><span id="result-days-remaining">—</span></li><li><span>Remaining budget / day</span><span id="result-remaining-per-day">—</span></li></ul>
+        <div class="chart-wrap"><canvas id="result-chart"></canvas></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Keeping a trip on budget while it's happening</h2>
+<p>A total trip budget is only useful if you can tell whether you're actually on track partway through. This calculator starts with the simple number — total budget divided by trip length — and then, if you enter what you've spent so far and how many days have passed, compares your original daily pace to what's actually left for the remaining days.</p>
+<p>If your remaining-budget-per-day figure is higher than your original planned figure, you're ahead of pace and have room to spend a bit more freely for the rest of the trip. If it's lower, you're behind pace and might want to ease off for a few days rather than discovering the shortfall on the last day.</p>
+<h3>Using this mid-trip, not just before you leave</h3>
+<p>This is most useful as a check-in tool: a couple of days into a trip, add up what you've actually spent (cash, cards, everything) and enter it along with days elapsed. Recalculating every few days turns a single upfront budget into an ongoing pace check, which catches overspending while there's still time to adjust — rather than at the airport on the way home.</p>
+<p>If you haven't built a full trip budget yet, start with the <a href="../calculators/travel-budget.html">Travel Budget Calculator</a> to get a realistic total, and use the <a href="../calculators/currency-converter.html">Currency Converter</a> to keep local-currency spending translated into numbers you understand at a glance.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details>
+  <summary>What if I leave 'already spent' and 'days elapsed' at zero?</summary>
+  <p>The calculator still shows your planned cost per day based on total budget and trip length. The remaining-budget comparison only becomes meaningful once you've actually started spending and enter real numbers partway through the trip.</p>
+</details>
+<details>
+  <summary>I'm over budget a few days in — what should I do?</summary>
+  <p>The remaining-budget-per-day figure already accounts for what's left, spread across your remaining days — that's your new realistic daily target. If it's uncomfortably low, look for the biggest remaining discretionary cost (activities, dining) to trim rather than cutting everything evenly.</p>
+</details>
+<details>
+  <summary>Should I include big one-time costs like flights in 'already spent'?</summary>
+  <p>It depends what your total budget included. If your total trip budget already accounted for flights separately, exclude them here too — this tool works best when both the total budget and the amount already spent are measured consistently.</p>
+</details>
+<details>
+  <summary>How is this different from the Travel Budget calculator?</summary>
+  <p>The <a href="../calculators/travel-budget.html">Travel Budget Calculator</a> builds a total budget from scratch out of category estimates. This tool assumes you already have a total and tracks the pace of actual spending against it during the trip.</p>
+</details>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+        <p style="margin-top:10px;max-width:280px;">Free, fast financial calculators. Pure HTML, CSS &amp; JavaScript — no accounts, no tracking clutter.</p>
+      </div>
+      <div>
+        <h4>Finance</h4>
+        <ul><li><a href="../calculators/compound-interest.html">Compound Interest</a></li>
+<li><a href="../calculators/savings-goal.html">Savings Goal</a></li>
+<li><a href="../calculators/emergency-fund.html">Emergency Fund</a></li>
+<li><a href="../calculators/retirement-savings.html">Retirement Savings</a></li>
+<li><a href="../calculators/net-worth.html">Net Worth</a></li>
+<li><a href="../calculators/loan-repayment.html">Loan Repayment</a></li>
+<li><a href="../calculators/mortgage.html">Mortgage</a></li>
+<li><a href="../calculators/monthly-budget.html">Monthly Budget</a></li></ul>
+      </div>
+      <div>
+        <h4>Freelance</h4>
+        <ul><li><a href="../calculators/freelance-day-rate.html">Day Rate</a></li>
+<li><a href="../calculators/project-quote.html">Project Quote</a></li>
+<li><a href="../calculators/freelance-tax.html">Tax Calculator</a></li>
+<li><a href="../calculators/hourly-rate.html">Hourly Rate</a></li></ul>
+      </div>
+      <div>
+        <h4>Voyage</h4>
+        <ul><li><a href="../calculators/travel-budget.html">Travel Budget</a></li>
+<li><a href="../calculators/currency-converter.html">Currency Converter</a></li>
+<li><a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 CalcTools. Built with plain HTML, CSS &amp; JavaScript.
+      <p class="disclaimer">Results from these calculators are estimates for general informational purposes only and are not financial, tax, or investment advice. Consult a qualified professional for decisions specific to your situation.</p>
+    </div>
+  </div>
+</footer>
+<script src="../js/common.js"></script>
+<script src="../js/vendor/chart.min.js"></script>
+<script src="../js/trip-cost-per-day.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

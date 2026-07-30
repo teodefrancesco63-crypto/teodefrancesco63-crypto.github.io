@@ -1,20 +1,23 @@
 # CalcTools
 
-A fast, dependency-free collection of financial calculators. Pure HTML, CSS and JavaScript — no build step, no framework.
+A fast, dependency-light collection of financial calculators. Pure HTML, CSS and JavaScript — no build step, no framework. The only third-party code is [Chart.js](https://www.chartjs.org/), vendored locally in `js/vendor/` so the site has no runtime CDN dependency.
 
 ## Structure
 
 ```
-index.html            Homepage listing all calculators
-calculators/           One HTML page per calculator
-  freelance-day-rate.html
+index.html              Homepage — category cards + full calculator grid
+categories/              One page per category (Finance, Freelance, Voyage)
+calculators/             One HTML page per calculator
 css/
-  style.css            Global stylesheet, shared by every page
+  style.css              Global stylesheet, shared by every page
 js/
-  freelance-day-rate.js  Logic for the freelance day rate calculator
+  common.js              Shared helpers (money formatting, chart upsert, color palette)
+  nav.js                 Dropdown / mobile menu behavior, shared by every page
+  vendor/chart.min.js     Vendored Chart.js (no CDN dependency)
+  <slug>.js              Calculation logic for each calculator
 ```
 
-Each calculator gets its own HTML page and its own JS file, and shares the single global stylesheet.
+Each calculator has its own HTML page and its own JS file, and shares the global stylesheet, nav script, and common helpers.
 
 ## Running locally
 
@@ -34,4 +37,27 @@ Then open `http://localhost:8090`.
 
 ## Calculators
 
-- **Freelance Day Rate Calculator** (`calculators/freelance-day-rate.html`) — works out the day rate a freelancer needs to charge to hit an income goal, accounting for time off, non-billable work and business expenses.
+### Finance — Épargne
+- **Compound Interest** (`calculators/compound-interest.html`)
+- **Savings Goal** (`calculators/savings-goal.html`)
+- **Emergency Fund** (`calculators/emergency-fund.html`)
+- **Retirement Savings** (`calculators/retirement-savings.html`)
+- **Net Worth** (`calculators/net-worth.html`)
+
+### Finance — Emprunt
+- **Loan Repayment** (`calculators/loan-repayment.html`)
+- **Mortgage** (`calculators/mortgage.html`)
+
+### Finance — Budget
+- **Monthly Budget** (`calculators/monthly-budget.html`)
+
+### Freelance
+- **Day Rate** (`calculators/freelance-day-rate.html`) — includes EUR/USD/GBP currency conversion.
+- **Project Quote** (`calculators/project-quote.html`)
+- **Tax Calculator** (`calculators/freelance-tax.html`)
+- **Hourly Rate** (`calculators/hourly-rate.html`)
+
+### Voyage
+- **Travel Budget** (`calculators/travel-budget.html`)
+- **Currency Converter** (`calculators/currency-converter.html`)
+- **Trip Cost Per Day** (`calculators/trip-cost-per-day.html`)

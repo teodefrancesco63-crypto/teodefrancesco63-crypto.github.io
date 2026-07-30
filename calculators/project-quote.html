@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Project Quote Calculator — Price a Fixed Project | CalcTools</title>
+<meta name="description" content="Turn estimated hours and your rate into a fixed project quote, with a contingency buffer for scope creep. Free freelance project quote calculator.">
+<link rel="canonical" href="https://example.github.io/CalcTools/calculators/project-quote.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Finance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><p class="nav-group-title">Épargne</p><a href="../calculators/compound-interest.html">Compound Interest</a>
+<a href="../calculators/savings-goal.html">Savings Goal</a>
+<a href="../calculators/emergency-fund.html">Emergency Fund</a>
+<a href="../calculators/retirement-savings.html">Retirement Savings</a>
+<a href="../calculators/net-worth.html">Net Worth</a></div>
+<div class="nav-group"><p class="nav-group-title">Emprunt</p><a href="../calculators/loan-repayment.html">Loan Repayment</a>
+<a href="../calculators/mortgage.html">Mortgage</a></div>
+<div class="nav-group"><p class="nav-group-title">Budget</p><a href="../calculators/monthly-budget.html">Monthly Budget</a></div></div></li>
+<li class="nav-item is-active"><button type="button" class="nav-trigger" aria-expanded="false">Freelance<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/freelance-day-rate.html">Day Rate</a>
+<a href="../calculators/project-quote.html">Project Quote</a>
+<a href="../calculators/freelance-tax.html">Tax Calculator</a>
+<a href="../calculators/hourly-rate.html">Hourly Rate</a></div></div></li>
+<li class="nav-item"><button type="button" class="nav-trigger" aria-expanded="false">Voyage<svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nav-dropdown"><div class="nav-group"><a href="../calculators/travel-budget.html">Travel Budget</a>
+<a href="../calculators/currency-converter.html">Currency Converter</a>
+<a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></div></div></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> / <a href="../categories/freelance.html">Freelance</a> / Project Quote Calculator
+  </nav>
+
+  <div class="calc-page-header">
+    <h1>Project Quote Calculator</h1>
+    <p class="subtitle">Turn estimated hours into a fixed-price quote, with room for scope creep.</p>
+  </div>
+
+  <section class="calculator">
+    <div class="calc-layout">
+      <form id="calc-form">
+        <div class="field-row"><div class="field-group">
+  <label for="estimatedHours">Estimated hours</label>
+  <input type="number" id="estimatedHours" min="0" step="1" value="40">
+  
+</div><div class="field-group">
+  <label for="hourlyRate">Your hourly rate</label>
+  <input type="number" id="hourlyRate" min="0" step="5" value="75">
+  
+</div></div><div class="field-group">
+  <label for="flatExpenses">Flat expenses</label>
+  <input type="number" id="flatExpenses" min="0" step="10" value="200">
+  <p class="hint">Subcontractors, stock assets, software specific to this project.</p>
+</div><div class="field-group">
+  <label for="bufferPct">Contingency buffer (%)</label>
+  <input type="number" id="bufferPct" min="0" max="100" step="5" value="15">
+  <p class="hint">Covers scope creep and revisions. 10-20% is typical.</p>
+</div>
+      </form>
+      <aside class="results">
+        <h2>Project quote</h2>
+        <div class="result-main"><span id="result-quote">$0</span></div><ul class="result-list"><li><span>Base cost</span><span id="result-base">—</span></li><li><span>Contingency buffer</span><span id="result-buffer">—</span></li><li><span>Effective hourly rate</span><span id="result-effective-hourly">—</span></li></ul>
+        <div class="chart-wrap"><canvas id="result-chart"></canvas></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Why fixed-price quotes need a buffer</h2>
+<p>Quoting a project by the hour is simple, but many clients want a single fixed number before work starts. The risk is that fixed-price quotes absorb every estimation error and every bit of scope creep — if the project runs longer than planned, an hourly freelancer still gets paid for the extra time, but a fixed-price freelancer eats the cost.</p>
+<p>This calculator starts with your honest estimate: hours multiplied by your hourly rate, plus any flat costs like subcontractors or paid assets specific to the project. It then adds a contingency buffer on top — a percentage that exists specifically to absorb the small surprises almost every project has, without you needing to renegotiate the price midway through.</p>
+<h3>Choosing a buffer percentage</h3>
+<p>A well-scoped project with a clear brief and an established client relationship might only need a 10% buffer. A vague brief, a new client, or a project with a lot of unknowns (research-heavy work, unfamiliar tools, dependencies on someone else's timeline) justifies 20% or more. The buffer isn't padding — it's pricing in the uncertainty that's already there whether you charge for it or not.</p>
+<p>If you don't have hours estimated yet and want a general rate first, start with the <a href="../calculators/freelance-day-rate.html">Day Rate Calculator</a> or <a href="../calculators/hourly-rate.html">Hourly Rate Calculator</a>. Once you've delivered the project, the <a href="../calculators/freelance-tax.html">Freelance Tax Calculator</a> can estimate what you'll actually keep after tax.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details>
+  <summary>How big should my contingency buffer be?</summary>
+  <p>10% for well-defined projects with clear scope and a known client, 20% or more for vague briefs, new clients, or anything with a lot of unknowns. Some freelancers use a flat 15% as a default across the board.</p>
+</details>
+<details>
+  <summary>Should I show the client the buffer separately?</summary>
+  <p>Most freelancers don't itemize it — the buffer is baked into the single quoted price rather than shown as a line item, since breaking it out invites negotiation on exactly that line.</p>
+</details>
+<details>
+  <summary>What counts as a flat expense?</summary>
+  <p>Anything specific to this project that isn't your own time: a subcontractor's fee, a licensed asset or font, a one-off software purchase. Recurring business costs like your general software subscriptions are better reflected in your hourly or day rate instead.</p>
+</details>
+<details>
+  <summary>How does this relate to my day rate?</summary>
+  <p>Your hourly rate here should be consistent with the one you use in the <a href="../calculators/freelance-day-rate.html">Day Rate Calculator</a> or <a href="../calculators/hourly-rate.html">Hourly Rate Calculator</a> — this tool just applies it to a specific number of estimated hours and adds a safety margin.</p>
+</details>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="logo">Calc<span>Tools</span></a>
+        <p style="margin-top:10px;max-width:280px;">Free, fast financial calculators. Pure HTML, CSS &amp; JavaScript — no accounts, no tracking clutter.</p>
+      </div>
+      <div>
+        <h4>Finance</h4>
+        <ul><li><a href="../calculators/compound-interest.html">Compound Interest</a></li>
+<li><a href="../calculators/savings-goal.html">Savings Goal</a></li>
+<li><a href="../calculators/emergency-fund.html">Emergency Fund</a></li>
+<li><a href="../calculators/retirement-savings.html">Retirement Savings</a></li>
+<li><a href="../calculators/net-worth.html">Net Worth</a></li>
+<li><a href="../calculators/loan-repayment.html">Loan Repayment</a></li>
+<li><a href="../calculators/mortgage.html">Mortgage</a></li>
+<li><a href="../calculators/monthly-budget.html">Monthly Budget</a></li></ul>
+      </div>
+      <div>
+        <h4>Freelance</h4>
+        <ul><li><a href="../calculators/freelance-day-rate.html">Day Rate</a></li>
+<li><a href="../calculators/project-quote.html">Project Quote</a></li>
+<li><a href="../calculators/freelance-tax.html">Tax Calculator</a></li>
+<li><a href="../calculators/hourly-rate.html">Hourly Rate</a></li></ul>
+      </div>
+      <div>
+        <h4>Voyage</h4>
+        <ul><li><a href="../calculators/travel-budget.html">Travel Budget</a></li>
+<li><a href="../calculators/currency-converter.html">Currency Converter</a></li>
+<li><a href="../calculators/trip-cost-per-day.html">Trip Cost Per Day</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 CalcTools. Built with plain HTML, CSS &amp; JavaScript.
+      <p class="disclaimer">Results from these calculators are estimates for general informational purposes only and are not financial, tax, or investment advice. Consult a qualified professional for decisions specific to your situation.</p>
+    </div>
+  </div>
+</footer>
+<script src="../js/common.js"></script>
+<script src="../js/vendor/chart.min.js"></script>
+<script src="../js/project-quote.js"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>
