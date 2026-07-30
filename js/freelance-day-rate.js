@@ -18,6 +18,24 @@
   var billableDaysOut = document.getElementById("result-billable-days");
   var revenueOut = document.getElementById("result-revenue");
 
+  // Approximate exchange rates, pivoted through EUR (the base currency).
+  var RATES_FROM_EUR = { EUR: 1, USD: 1.08, GBP: 0.86 };
+  var RATES_TO_EUR = { EUR: 1, USD: 0.93, GBP: 1.16 };
+
+  var currentCurrency = currencyInput.value;
+
+  function convertAmount(amount, fromCurrency, toCurrency) {
+    if (fromCurrency === toCurrency) return amount;
+    var amountInEur = amount * RATES_TO_EUR[fromCurrency];
+    return amountInEur * RATES_FROM_EUR[toCurrency];
+  }
+
+  function convertFieldValue(input, fromCurrency, toCurrency) {
+    var value = parseFloat(input.value);
+    if (isNaN(value)) return;
+    input.value = Math.round(convertAmount(value, fromCurrency, toCurrency));
+  }
+
   function formatMoney(value, currency) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -59,6 +77,16 @@
     billableDaysOut.textContent = Math.round(billableDays);
     revenueOut.textContent = formatMoney(revenueNeeded, currency);
   }
+
+  currencyInput.addEventListener("change", function () {
+    var newCurrency = currencyInput.value;
+    if (newCurrency !== currentCurrency) {
+      convertFieldValue(incomeInput, currentCurrency, newCurrency);
+      convertFieldValue(expensesInput, currentCurrency, newCurrency);
+      currentCurrency = newCurrency;
+    }
+    calculate();
+  });
 
   form.addEventListener("input", calculate);
   calculate();
