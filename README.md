@@ -6,7 +6,7 @@ A fast, dependency-light collection of financial calculators. Pure HTML, CSS and
 
 ```
 index.html              Homepage — category cards + full calculator grid
-categories/              One page per category (Finance, Freelance, Voyage)
+categories/              One page per category (Finance, Freelance, Travel)
 calculators/             One HTML page per calculator
 css/
   style.css              Global stylesheet, shared by every page
@@ -57,7 +57,7 @@ Then open `http://localhost:8090`.
 - **Tax Calculator** (`calculators/freelance-tax.html`)
 - **Hourly Rate** (`calculators/hourly-rate.html`)
 
-### Voyage
+### Travel
 - **Travel Budget** (`calculators/travel-budget.html`)
 - **Currency Converter** (`calculators/currency-converter.html`)
 - **Trip Cost Per Day** (`calculators/trip-cost-per-day.html`)
