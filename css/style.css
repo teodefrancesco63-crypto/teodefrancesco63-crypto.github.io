@@ -13,7 +13,7 @@
   --color-primary-light: #eaf0f6;
   --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
   --color-accent: #2ecc71;
-  --color-accent-dark: #1f9c56;
+  --color-accent-dark: #146c3d;
   --color-accent-light: #e6f9ee;
   --chart-1: #1e3a5f;
   --chart-2: #2ecc71;
@@ -111,7 +111,7 @@ ul {
 }
 
 .logo span {
-  color: var(--color-accent);
+  color: var(--color-accent-dark);
 }
 
 .nav-toggle {
@@ -325,7 +325,8 @@ ul {
 
 .category-card {
   position: relative;
-  background: var(--gradient-primary);
+  background-color: var(--color-primary);
+  background-image: var(--gradient-primary);
   color: #fff;
   border-radius: var(--radius);
   padding: 28px;
@@ -344,14 +345,14 @@ ul {
   margin-bottom: 10px;
 }
 
-.category-card h3 {
+.category-card h2 {
   color: #fff;
   font-size: 1.3rem;
   margin-bottom: 6px;
 }
 
 .category-card p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.94);
   font-size: 0.92rem;
   margin-bottom: 0;
 }
@@ -724,7 +725,7 @@ details p {
   }
 }
 
-.footer-grid h4 {
+.footer-grid h3 {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
