@@ -1,4 +1,4 @@
-# CalcTools
+# Toolratio
 
 A fast, dependency-light collection of financial calculators. Pure HTML, CSS and JavaScript — no build step, no framework. The only third-party code is [Chart.js](https://www.chartjs.org/), vendored locally in `js/vendor/` so the site has no runtime CDN dependency.
 
@@ -6,6 +6,7 @@ A fast, dependency-light collection of financial calculators. Pure HTML, CSS and
 
 ```
 index.html              Homepage — category cards + full calculator grid
+about.html               About Toolratio
 categories/              One page per category (Finance, Freelance, Travel)
 calculators/             One HTML page per calculator
 css/
@@ -37,14 +38,14 @@ Then open `http://localhost:8090`.
 
 ## Calculators
 
-### Finance — Épargne
+### Finance — Savings
 - **Compound Interest** (`calculators/compound-interest.html`)
 - **Savings Goal** (`calculators/savings-goal.html`)
 - **Emergency Fund** (`calculators/emergency-fund.html`)
 - **Retirement Savings** (`calculators/retirement-savings.html`)
 - **Net Worth** (`calculators/net-worth.html`)
 
-### Finance — Emprunt
+### Finance — Borrowing
 - **Loan Repayment** (`calculators/loan-repayment.html`)
 - **Mortgage** (`calculators/mortgage.html`)
 

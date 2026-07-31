@@ -1,4 +1,4 @@
-/* CalcTools — global stylesheet
+/* Toolratio — global stylesheet
    Pure CSS, no framework, no build step. Mobile-first. */
 
 :root {
@@ -720,7 +720,7 @@ details p {
 
 @media (min-width: 700px) {
   .footer-grid {
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
   }
 }
 
