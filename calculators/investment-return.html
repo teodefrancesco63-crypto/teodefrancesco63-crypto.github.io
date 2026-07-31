@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mortgage Calculator — Monthly Payment Estimate | Toolratio</title>
-<meta name="description" content="Estimate your monthly mortgage payment including principal, interest, taxes, and insurance. Free mortgage calculator.">
-<link rel="canonical" href="https://toolratio.com/calculators/mortgage.html">
+<title>Investment Return Calculator — Total Return & CAGR | Toolratio</title>
+<meta name="description" content="Calculate the total return and annualized return (CAGR) on an investment from its starting and ending value over a chosen period.">
+<link rel="canonical" href="https://toolratio.com/calculators/investment-return.html">
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -39,73 +39,65 @@
 </header>
 <main class="container">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="../index.html">Home</a> / <a href="../categories/finance.html">Finance</a> / Mortgage Calculator
+    <a href="../index.html">Home</a> / <a href="../categories/finance.html">Finance</a> / Investment Return Calculator
   </nav>
 
   <div class="calc-page-header">
-    <h1>Mortgage Calculator</h1>
-    <p class="subtitle">Estimate your monthly mortgage payment, including taxes and insurance.</p>
+    <h1>Investment Return Calculator</h1>
+    <p class="subtitle">Work out the total return and annualized (CAGR) return on an investment, from what you put in to what it's worth now.</p>
   </div>
 
   <section class="calculator">
     <div class="calc-layout">
       <form id="calc-form">
         <div class="field-row"><div class="field-group">
-  <label for="homePrice">Home price</label>
-  <input type="number" id="homePrice" min="0" step="1000" value="300000">
+  <label for="initialInvestment">Initial investment</label>
+  <input type="number" id="initialInvestment" min="0.01" step="100" value="10000">
   
 </div><div class="field-group">
-  <label for="downPayment">Down payment</label>
-  <input type="number" id="downPayment" min="0" step="1000" value="60000">
-  
-</div></div><div class="field-row"><div class="field-group">
-  <label for="annualRate">Annual interest rate (%)</label>
-  <input type="number" id="annualRate" min="0" max="20" step="0.05" value="6.5">
-  
-</div><div class="field-group">
-  <label for="termYears">Loan term (years)</label>
-  <input type="number" id="termYears" min="5" max="40" step="1" value="30">
+  <label for="finalValue">Current / final value</label>
+  <input type="number" id="finalValue" min="0" step="100" value="16000">
   
 </div></div><div class="field-group">
-  <label for="monthlyExtras">Monthly taxes, insurance & HOA</label>
-  <input type="number" id="monthlyExtras" min="0" step="10" value="350">
-  <p class="hint">Optional — added on top of principal and interest.</p>
+  <label for="years">Holding period (years)</label>
+  <input type="number" id="years" min="0.1" max="50" step="0.5" value="5">
+  <p class="hint">Can include fractions, e.g. 2.5 for two and a half years.</p>
 </div>
       </form>
       <aside class="results">
-        <h2>Estimated monthly payment</h2>
-        <div class="result-main"><span id="result-total-payment">$0</span><span class="unit">/ month</span></div><ul class="result-list"><li><span>Principal & interest</span><span id="result-pi">—</span></li><li><span>Loan amount</span><span id="result-loan-amount">—</span></li><li><span>Total interest over term</span><span id="result-total-interest">—</span></li></ul>
+        <h2>Total return</h2>
+        <div class="result-main"><span id="result-total-return">0%</span></div><ul class="result-list"><li><span>Annualized return (CAGR)</span><span id="result-cagr">—</span></li><li><span>Total gain</span><span id="result-gain">—</span></li><li><span>Final value</span><span id="result-final">—</span></li></ul>
         <div class="chart-wrap"><canvas id="result-chart"></canvas></div>
       </aside>
     </div>
   </section>
 
   <section class="content-section">
-    <h2>What goes into a mortgage payment</h2>
-<p>A mortgage payment usually has more moving parts than a standard loan: principal and interest (P&amp;I) form the base, calculated on the amount you borrow after your down payment — not the full home price. On top of that, lenders often collect property taxes and homeowners insurance monthly (sometimes bundled into an escrow account), and if your down payment is under 20%, private mortgage insurance may apply as well.</p>
-<p>This calculator computes P&amp;I using the same amortization formula as any fixed-rate loan, then adds your estimated monthly taxes, insurance, and HOA dues on top to give a more realistic total monthly cost — the number that actually matters for budgeting.</p>
-<h3>How the down payment changes things</h3>
-<p>Every dollar of down payment reduces the loan amount dollar for dollar, which lowers both the monthly payment and the total interest paid over the life of the loan. A 20% down payment is a common target because it typically avoids private mortgage insurance, but the right amount depends on your savings, other goals, and local market conditions.</p>
-<p>Try comparing a 15-year term against a 30-year term at the same rate — the monthly payment is higher, but total interest paid is dramatically lower. Once you have a sense of the loan amount and monthly cost, the <a href="../calculators/monthly-budget.html">Monthly Budget Calculator</a> can show how it fits alongside your other expenses, and the <a href="../calculators/net-worth.html">Net Worth Calculator</a> tracks the home equity you build over time.</p>
+    <h2>Total return vs. annualized return</h2>
+<p>These two numbers answer different questions, and mixing them up leads to bad comparisons. Total return is simply how much an investment grew in value over the whole period you held it — a straightforward percentage change from what you put in to what it's worth now. Annualized return, or CAGR (compound annual growth rate), smooths that same growth into an equivalent steady yearly rate, which is what makes it possible to fairly compare investments held for different lengths of time.</p>
+<p>A 60% total return sounds identical whether it happened over 2 years or 10 years, but the annualized return tells a very different story: roughly 26% a year in the first case, versus about 4.8% a year in the second. This calculator computes both from just three numbers — what you started with, what it's worth now, and how long you held it — using the standard CAGR formula: <code>(final ÷ initial)^(1 ÷ years) − 1</code>.</p>
+<h3>What this doesn't capture</h3>
+<p>This calculator assumes a single lump-sum investment with no additional contributions or withdrawals along the way, and it doesn't smooth out volatility — two investments with the same CAGR can have had very different, and very different-feeling, rides to get there. It also doesn't account for taxes, fees, or inflation eating into the real return.</p>
+<p>If you're modeling regular contributions growing forward rather than measuring a past or hypothetical result, the <a href="../calculators/compound-interest.html">Compound Interest Calculator</a> is the better tool. For a full retirement projection with contributions, see the <a href="../calculators/retirement-savings.html">Retirement Savings Calculator</a>.</p>
   </section>
 
   <section class="faq">
     <h2>Frequently asked questions</h2>
     <details>
-  <summary>What's a realistic estimate for taxes and insurance?</summary>
-  <p>It varies a lot by location. As a rough starting point, property taxes often run 0.5-2% of home value per year, and insurance a few hundred dollars a month — check local rates for a more accurate figure, since this varies significantly between regions.</p>
+  <summary>What's the difference between total return and CAGR?</summary>
+  <p>Total return is the overall percentage gain over the entire holding period, with no adjustment for how long that took. CAGR (annualized return) converts that into an equivalent constant yearly rate, which is the only fair way to compare investments held for different lengths of time.</p>
 </details>
 <details>
-  <summary>Should I put down 20%?</summary>
-  <p>20% is a common benchmark mainly because it usually avoids private mortgage insurance (PMI), an extra monthly cost on top of P&I. It's not a hard requirement — many loans allow less down — but putting down less generally means a higher monthly payment and more total interest.</p>
+  <summary>Can I use this for a partial year, like 8 months?</summary>
+  <p>Yes — enter the holding period as a fraction of a year, e.g. 0.67 for 8 months. The holding period field accepts decimals for exactly this reason.</p>
 </details>
 <details>
-  <summary>Why is my payment much higher than just principal and interest?</summary>
-  <p>Taxes, insurance, and HOA dues (if applicable) are often collected monthly alongside your loan payment. Toggle the "Monthly taxes, insurance & HOA" field to 0 to see the principal-and-interest-only figure for comparison.</p>
+  <summary>Does this account for dividends or additional contributions?</summary>
+  <p>No — this calculator measures the return between a single starting value and a single ending value only. If you made regular contributions along the way rather than one lump sum, use the <a href="../calculators/compound-interest.html">Compound Interest Calculator</a> instead, which is built for that case.</p>
 </details>
 <details>
-  <summary>How is this different from the Loan Repayment calculator?</summary>
-  <p>The math is the same amortization formula. This calculator adds mortgage-specific details — a down payment and optional monthly taxes/insurance/HOA — on top. For a simpler loan without those extras, use the <a href="../calculators/loan-repayment.html">Loan Repayment Calculator</a>.</p>
+  <summary>Why is my CAGR lower than my total return?</summary>
+  <p>CAGR will always be lower than total return for holding periods longer than one year, because it's spreading the same overall gain across multiple years of compounding. For holding periods under a year, CAGR is actually higher than total return, since it's annualizing a shorter period upward.</p>
 </details>
   </section>
 </main>
@@ -154,7 +146,7 @@
 </footer>
 <script src="../js/common.js"></script>
 <script src="../js/vendor/chart.min.js"></script>
-<script src="../js/mortgage.js"></script>
+<script src="../js/investment-return.js"></script>
 <script src="../js/nav.js"></script>
 </body>
 </html>
