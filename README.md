@@ -1,12 +1,17 @@
 # Toolratio
 
-A fast, dependency-light collection of financial calculators. Pure HTML, CSS and JavaScript — no build step, no framework. The only third-party code is [Chart.js](https://www.chartjs.org/), vendored locally in `js/vendor/` so the site has no runtime CDN dependency.
+**Live site: [toolratio.com](https://toolratio.com)**
+
+Toolratio is a collection of 16 free financial calculators for savings, borrowing, freelance pricing, and travel budgeting. Every calculator runs entirely in the browser — no sign-up, no accounts, and no data leaves your machine — and each result comes with a small chart to make the numbers easier to read. The site is plain HTML, CSS and JavaScript with no build step and no framework; the only third-party code is [Chart.js](https://www.chartjs.org/), vendored locally in `js/vendor/` so there's no runtime CDN dependency.
 
 ## Structure
 
 ```
 index.html              Homepage — category cards + full calculator grid
 about.html               About Toolratio
+privacy-policy.html      Privacy policy
+terms.html               Terms of use
+sitemap.xml              All 23 page URLs, matching each page's canonical
 categories/              One page per category (Finance, Freelance, Travel)
 calculators/             One HTML page per calculator
 css/
@@ -43,6 +48,7 @@ Then open `http://localhost:8090`.
 - **Savings Goal** (`calculators/savings-goal.html`)
 - **Emergency Fund** (`calculators/emergency-fund.html`)
 - **Retirement Savings** (`calculators/retirement-savings.html`)
+- **Investment Return** (`calculators/investment-return.html`) — total return and CAGR.
 - **Net Worth** (`calculators/net-worth.html`)
 
 ### Finance — Borrowing
